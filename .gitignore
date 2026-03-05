@@ -1,0 +1,9 @@
+# Virtual Environment
+local_env/
+
+# Secrets and Local Config
+.env
+
+# Python bytecode (optional but recommended)
+__pycache__/
+*.pyc
