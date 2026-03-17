@@ -1,14 +1,18 @@
 import os
 from langchain_google_genai import GoogleGenerativeAIEmbeddings
 from langchain_community.vectorstores import Chroma
-from langchain.storage import InMemoryStore
-from langchain.retrievers import ParentDocumentRetriever
-from langchain.text_splitter import RecursiveCharacterTextSplitter
+from langchain_core.stores import InMemoryStore
+from langchain_classic.retrievers import ParentDocumentRetriever
+from langchain_text_splitters import RecursiveCharacterTextSplitter
+from langchain_huggingface import HuggingFaceEmbeddings
+from dotenv import load_dotenv
+
+load_dotenv()
 
 # 1. Initialize Google Embeddings
 # 'embedding-001' is highly efficient for ESG text retrieval
-embeddings = GoogleGenerativeAIEmbeddings(model="models/embedding-001")
-
+#embeddings = GoogleGenerativeAIEmbeddings(model="models/embedding-001")
+embeddings = HuggingFaceEmbeddings(model_name="all-MiniLM-L6-v2")
 # 2. Define the Vector Store (The Child Chunk Store)
 # We point this to the 'chroma_db' folder in your project root
 # This stores the vectors of the small 400-character chunks
@@ -49,16 +53,6 @@ hierarchical_retriever = ParentDocumentRetriever(
     parent_splitter=parent_splitter,
 )
 
-# Example of how to use metadata filtering with this retriever:
-
-# hierarchical_retriever.invoke("carbon emissions", filter={"company": "Apple"})
-
-# In src/retrieval/retriever.py
-#from langchain.storage import LocalFileStore
-
-# Create a folder for the parent chunks
-#parent_store_path = os.path.join(os.path.dirname(__file__), "../../parent_store")
-#os.makedirs(parent_store_path, exist_ok=True)
-
-# Use LocalFileStore so parent docs stay on your hard drive
-#docstore = LocalFileStore(parent_store_path)
+print("Embedding documents locally... this will be fast!")
+#hierarchical_retriever.add_documents(raw_documents)
+print("Done!")

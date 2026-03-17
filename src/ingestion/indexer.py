@@ -1,6 +1,6 @@
 import os
-from langchain.schema import Document
-from langchain.text_splitter import MarkdownHeaderTextSplitter
+from langchain_core.documents import Document
+from langchain_text_splitters import MarkdownHeaderTextSplitter
 from src.retrieval.retriever import hierarchical_retriever
 
 def ingest_esg_report(markdown_path: str, company_name: str, year: int, sector: str):
@@ -50,5 +50,5 @@ def ingest_esg_report(markdown_path: str, company_name: str, year: int, sector: 
 # Example Standalone Execution:
 if __name__ == "__main__":
     # In a real workflow, this would be called after your Gemini Vision parsing step
-    # ingest_esg_report("data/parsed_markdown/apple_2024.md", "Apple", 2024, "Technology")
-    pass
+    ingest_esg_report("data/parsed_markdown/TataMotersBRSR.md", "Tata Motors", 2024, "Automotive")
+    #pass

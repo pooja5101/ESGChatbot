@@ -11,7 +11,7 @@ class RouteQuery(BaseModel):
     filters: Optional[SearchFilters] = Field(description="The extracted metadata filters, if a search is needed.")
 
 # Initialize Gemini 1.5 Pro
-llm = ChatGoogleGenerativeAI(model="gemini-1.5-pro", temperature=0)
+llm = ChatGoogleGenerativeAI(model="gemini-2.5-flash-lite", temperature=0)
 structured_router = llm.with_structured_output(RouteQuery)
 
 # 2. Define the Nodes

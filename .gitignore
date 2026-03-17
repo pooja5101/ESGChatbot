@@ -1,6 +1,7 @@
 # Virtual Environment
 local_env/
 
+chroma_db/
 # Secrets and Local Config
 .env
 
