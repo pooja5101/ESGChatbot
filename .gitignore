@@ -2,6 +2,9 @@
 local_env/
 
 chroma_db/
+
+data/parent_store/
+data/parsed_markdown/
 # Secrets and Local Config
 .env
 

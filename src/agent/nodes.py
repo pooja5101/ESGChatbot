@@ -20,6 +20,7 @@ def router_node(state: AgentState):
     print("\n--- 🧠 ANALYZING & ROUTING ---")
     query = state["messages"][-1].content
     
+    print(f"User query: {query}")
     # Ask Gemini to structure the intent
     routing_decision = structured_router.invoke(query)
     

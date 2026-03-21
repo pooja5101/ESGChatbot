@@ -105,5 +105,5 @@ def parse_pdf_to_markdown(pdf_path: str, output_folder: str):
 
 if __name__ == "__main__":
     # Example usage:
-    parse_pdf_to_markdown("data/raw_pdfs/TataMotersBRSR.pdf", "data/parsed_markdown")
+    parse_pdf_to_markdown("data/raw_pdfs/Mahindra-and-Mahindra-Sustainability-Report-2025.pdf", "data/parsed_markdown")
     #pass

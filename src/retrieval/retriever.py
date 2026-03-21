@@ -1,7 +1,10 @@
 import os
 from langchain_google_genai import GoogleGenerativeAIEmbeddings
-from langchain_community.vectorstores import Chroma
-from langchain_core.stores import InMemoryStore
+from langchain_chroma import Chroma
+# from langchain_store_file import InMemoryStore
+#from langchain_core.stores import LocalFileStore
+from langchain_classic.storage import LocalFileStore
+from langchain_classic.storage import create_kv_docstore
 from langchain_classic.retrievers import ParentDocumentRetriever
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 from langchain_huggingface import HuggingFaceEmbeddings
@@ -28,7 +31,9 @@ vectorstore = Chroma(
 # This stores the full 2000-character parent text. 
 # For local dev, we use InMemoryStore. 
 # For production/scale, replace this with LocalFileStore or a Redis store.
-docstore = InMemoryStore()
+fs = LocalFileStore("D:/Projects/AiProjects/ESGChatbot/data/parent_store")
+#fs = LocalFileStore("./parent_store") 
+docstore = create_kv_docstore(fs)
 
 # 4. Define the Hierarchical Splitters
 # Parent: Provides broad context (e.g., an entire section on Carbon Targets)
