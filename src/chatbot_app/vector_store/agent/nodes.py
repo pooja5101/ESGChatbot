@@ -2,8 +2,8 @@ from pydantic import BaseModel, Field
 from typing import Optional
 from langchain_google_genai import ChatGoogleGenerativeAI
 from langchain_core.messages import HumanMessage
-from src.agent.state import AgentState, SearchFilters
-from src.retrieval.retriever import hierarchical_retriever
+from ESGChatbot.src.chatbot_app.vector_store.agent.state import AgentState, SearchFilters
+from ESGChatbot.src.chatbot_app.vector_store.retrieval.retriever import hierarchical_retriever
 
 # 1. Upgrade the Router Schema
 class RouteQuery(BaseModel):

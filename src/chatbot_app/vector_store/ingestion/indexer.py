@@ -2,7 +2,7 @@ import os
 import uuid
 from langchain_core.documents import Document
 from langchain_text_splitters import MarkdownHeaderTextSplitter
-from src.retrieval.retriever import hierarchical_retriever
+from ESGChatbot.src.chatbot_app.vector_store.retrieval.retriever import hierarchical_retriever
 from dotenv import load_dotenv
 
 load_dotenv()
